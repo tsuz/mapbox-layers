@@ -1,6 +1,11 @@
-# Getting Started with Create React App
+[![CircleCI](https://circleci.com/gh/tsuz/mapbox-layers/tree/main.svg?style=svg)](https://circleci.com/gh/tsuz/mapbox-layers/tree/main)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![codecov](https://codecov.io/gh/tsuz/mapbox-layers/branch/main/graph/badge.svg?token=1pCBpwmI0t)](https://codecov.io/gh/tsuz/mapbox-layers)
+
+# Mapbox Layers
+
+Map layers added to Mapbox maps.
+
 
 ## Available Scripts
 
