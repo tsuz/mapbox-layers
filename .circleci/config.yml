@@ -6,15 +6,7 @@ version: 2.1
 
 orbs:
     codecov: codecov/codecov@1.0.4
-
-executors:
-  node:
-    parameters:
-      image:
-        type: string
-        default: "10"
-    docker:
-    - image: circleci/node:4.7.0
+    node: circleci/node@1.1.6
 
 jobs:
   build:
@@ -50,7 +42,7 @@ jobs:
 
   deploy:
     executor:
-      name: node
+      name: node/default
     working_directory: ~/workspace
     steps:
       - run:
