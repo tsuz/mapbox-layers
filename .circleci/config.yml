@@ -7,6 +7,15 @@ version: 2.1
 orbs:
     codecov: codecov/codecov@1.0.4
 
+executors:
+  node:
+    parameters:
+      image:
+        type: string
+        default: "10"
+    docker:
+    - image: circleci/node:4.7.0
+
 jobs:
   build:
     docker:
@@ -38,10 +47,12 @@ jobs:
       - codecov/upload:
           file: './coverage/clover.xml'
           token: $CODECOV_TOKEN
+
   deploy:
+    executor:
+      name: node
     working_directory: ~/workspace
     steps:
-      - build
       - run:
           name: Netlify Deploy
           command: yarn netlify deploy -p -d ./build -s $NETLIFY_SITE_ID -a $NETLIFY_AUTH_TOKEN
@@ -51,5 +62,5 @@ workflows:
     jobs:
       - build
       - deploy:
-        requires:
+          requires:
           - build
