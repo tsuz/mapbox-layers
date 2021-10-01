@@ -38,8 +38,18 @@ jobs:
       - codecov/upload:
           file: './coverage/clover.xml'
           token: $CODECOV_TOKEN
+  deploy:
+    working_directory: ~/workspace
+    steps:
+      - build
+      - run:
+          name: Netlify Deploy
+          command: yarn netlify deploy -p -d ./build -s $NETLIFY_SITE_ID -a $NETLIFY_AUTH_TOKEN
 
 workflows:
   build-workflow:
     jobs:
       - build
+      - deploy:
+        requires:
+          - build
